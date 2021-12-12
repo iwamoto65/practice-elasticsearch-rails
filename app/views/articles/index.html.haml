@@ -1,14 +1,18 @@
 %div{ style: "width: 70%; margin: 100px auto;" }
   %p{ style: "text-align: right;" }
     = "全#{@articles.size}件"
+    = link_to "新規作成", new_article_path
 
   %table{ border: "1" }
     %tr
       %th タイトル
       %th 説明
+      %td
     - @articles.each do |article|
       %tr
         %td{ style: "padding: 10px;" }
           = link_to article.title, article_path(article.id)
         %td{ style: "padding: 10px;" }
           = article.description
+        %td
+          = button_to '削除する', article_path(article.id), method: :delete
