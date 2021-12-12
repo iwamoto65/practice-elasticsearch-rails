@@ -15,4 +15,5 @@
         %td{ style: "padding: 10px;" }
           = article.description
         %td
+          = button_to '編集する', edit_article_path(article.id), method: :get
           = button_to '削除する', article_path(article.id), method: :delete
