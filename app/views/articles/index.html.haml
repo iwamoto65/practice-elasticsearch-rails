@@ -1,0 +1,14 @@
+%div{ style: "width: 70%; margin: 100px auto;" }
+  %p{ style: "text-align: right;" }
+    = "全#{@articles.size}件"
+
+  %table{ border: "1" }
+    %tr
+      %th タイトル
+      %th 説明
+    - @articles.each do |article|
+      %tr
+        %td{ style: "padding: 10px;" }
+          = link_to article.title, article_path(article.id)
+        %td{ style: "padding: 10px;" }
+          = article.description
