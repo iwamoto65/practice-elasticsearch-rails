@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.order(created_at: :desc)
+    @articles = Article.search_document(params[:title])
   end
 
   def show

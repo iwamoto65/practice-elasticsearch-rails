@@ -1,4 +1,10 @@
 %div{ style: "width: 70%; margin: 100px auto;" }
+  %div{ style: "text-align: center;" }
+    = form_with url: articles_path, local: true, method: :get do |f|
+      = f.text_field :title, placeholder: 'タイトルを入力してください', value: params[:title], style: "width: 50%; height: 25px;"
+      = f.submit '検索する'
+    %hr
+
   %p{ style: "text-align: right;" }
     = "全#{@articles.size}件"
     = link_to "新規作成", new_article_path
