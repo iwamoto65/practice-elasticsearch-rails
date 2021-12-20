@@ -1,7 +1,7 @@
-%div{ style: "width: 70%; margin: 100px auto;" }
-  %div{ style: "text-align: center;" }
+.container{ class: "w-75" }
+  %div{ class: "mt-5 text-center" }
     = form_with url: articles_path, local: true, method: :get do |f|
-      = f.text_field :title, placeholder: 'タイトルを入力してください', value: params[:title], style: "width: 50%; height: 25px;"
+      = f.text_field :title, placeholder: 'タイトルを入力してください', value: params[:title], class: "w-50"
       = f.submit '検索する'
     %hr
 
@@ -9,7 +9,7 @@
     = "全#{@articles.size}件"
     = link_to "新規作成", new_article_path
 
-  %table{ border: "1" }
+  %table{ class: "table table-hover" }
     %tr
       %th タイトル
       %th 説明
