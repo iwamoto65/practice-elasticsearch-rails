@@ -1,8 +1,8 @@
 .container{ class: "w-75" }
   %div{ class: "mt-5 text-center" }
-    = form_with url: articles_path, local: true, method: :get do |f|
-      = f.text_field :title, placeholder: 'タイトルを入力してください', value: params[:title], class: "w-50"
-      = f.submit '検索'
+    = form_with url: articles_path, local: true, method: :get, class: "d-flex justify-content-center" do |f|
+      = f.search_field :title, placeholder: 'タイトルで調べる', value: params[:title], class: "w-50 form-control me-2 d-inline"
+      = f.submit '検索', class: "btn btn-outline-primary"
     %hr
 
   %p{ class: "text-end mt-4" }
@@ -10,7 +10,7 @@
     = link_to "新規作成", new_article_path
 
   %table{ class: "table table-hover" }
-    %tr
+    %tr{ class: "table-light" }
       %th タイトル
       %th 説明
       %td
@@ -20,6 +20,6 @@
           = link_to article.title, article_path(article.id)
         %td
           = article.description
-        %td
+        %td{ class: "text-end" }
           = button_to '編集', edit_article_path(article.id), method: :get, class: "btn btn-success mb-1"
           = button_to '削除', article_path(article.id), method: :delete, class: "btn btn-danger"
