@@ -3,9 +3,11 @@ module Elasticsearch::ArticleSearchable
 
   included do
     include Elasticsearch::Model
+    include Elasticsearch::Model::Callbacks
 
-    settings index: { number_of_shards: 3 } do
+    settings index: { number_of_shards: 1 } do
       mappings dynamic: 'false' do
+        indexes :id, type: 'integer'
         indexes :title, type: 'text', analyzer: 'english', index_options: 'offsets'
         indexes :description, type: 'text', analyzer: 'english'
       end
@@ -42,7 +44,10 @@ module Elasticsearch::ArticleSearchable
         query: {
           match_all: {}
         },
-        size: 100
+        size: 50,
+        sort: {
+          "id": "desc"
+        }
       }
     end
   end
