@@ -2,10 +2,10 @@
   %div{ class: "mt-5 text-center" }
     = form_with url: articles_path, local: true, method: :get do |f|
       = f.text_field :title, placeholder: 'タイトルを入力してください', value: params[:title], class: "w-50"
-      = f.submit '検索する'
+      = f.submit '検索'
     %hr
 
-  %p{ style: "text-align: right;" }
+  %p{ class: "text-end" }
     = "全#{@articles.size}件"
     = link_to "新規作成", new_article_path
 
@@ -15,11 +15,11 @@
       %th 説明
       %td
     - @articles.each do |article|
-      %tr
-        %td{ style: "padding: 10px;" }
+      %tr{ class: "align-middle" }
+        %td
           = link_to article.title, article_path(article.id)
-        %td{ style: "padding: 10px;" }
+        %td
           = article.description
         %td
-          = button_to '編集する', edit_article_path(article.id), method: :get
-          = button_to '削除する', article_path(article.id), method: :delete
+          = button_to '編集', edit_article_path(article.id), method: :get, class: "btn btn-success mb-1"
+          = button_to '削除', article_path(article.id), method: :delete, class: "btn btn-danger"
