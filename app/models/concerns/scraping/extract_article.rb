@@ -5,6 +5,7 @@ module Scraping::ExtractArticle
   extend ActiveSupport::Concern
 
   def fetch_rakuten_articles
+    # Rakuten Magazineの全ての雑誌カテゴリーから取得
     url = 'https://magazine.rakuten.co.jp/json/v1.0/latestIssues'
     file_name = 'articles_rakuten.json'
 
