@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: draft_articles
+# Table name: article_drafts
 #
 #  id          :bigint           not null, primary key
 #  description :text(65535)
@@ -9,6 +9,6 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-class DraftArticle < ApplicationRecord
+class ArticleDraft < ApplicationRecord
   enum status: { draft: 0, published: 1 }
 end

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_25_032408) do
+ActiveRecord::Schema.define(version: 2021_12_25_051349) do
+
+  create_table "article_drafts", charset: "utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "articles", charset: "utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -18,14 +26,6 @@ ActiveRecord::Schema.define(version: 2021_12_25_032408) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["created_at"], name: "index_articles_on_created_at"
-  end
-
-  create_table "draft_articles", charset: "utf8", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "description"
-    t.integer "status", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

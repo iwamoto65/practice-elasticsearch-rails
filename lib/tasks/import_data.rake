@@ -1,5 +1,5 @@
 namespace :import_data do
-  namespace :draft_article do
+  namespace :article_draft do
     desc 'DBにデータを投入'
     task :input_json_file => :environment do
       articles = nil
@@ -13,7 +13,7 @@ namespace :import_data do
       end
 
       ActiveRecord::Base.transaction do
-        DraftArticle.import(import_target_data)
+        ArticleDraft.import(import_target_data)
       end
     end
   end
