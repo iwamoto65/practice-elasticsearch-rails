@@ -20,6 +20,7 @@ gem 'bootstrap', '~> 5.1', '>= 5.1.3'
 gem 'popper_js', '~> 2.9', '>= 2.9.3'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'active_model_serializers', '~> 0.10.12'
+gem 'activerecord-import'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
