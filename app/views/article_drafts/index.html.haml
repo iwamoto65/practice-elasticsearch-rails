@@ -5,13 +5,17 @@
   %table.table.table-hover{ style: "table-layout: fixed;" }
     %tr.table-light
       %th.w-25 タイトル
-      %th 説明
+      %th{ style: "width: 65%;" } 説明
+      %th
     - @article_drafts.each do |article|
       %tr.align-middle
         %td
           = article.title
         %td
           = article.description
+        %td.text-end
+          = form_with url: apploval_article_draft_path(article.id), local: true do |f|
+            = f.submit '承認', class: "btn btn-info text-white", name: "confirm"
 
   .my-5
     = paginate @article_drafts

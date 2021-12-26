@@ -11,4 +11,6 @@
 #
 class ArticleDraft < ApplicationRecord
   enum status: { draft: 0, published: 1 }
+
+  scope :not_apploved, -> { where(:status => "draft") }
 end
