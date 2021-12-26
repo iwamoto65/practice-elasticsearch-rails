@@ -9,9 +9,9 @@
     = "全#{@articles.size}件"
     = link_to "新規作成", new_article_path
 
-  %table.table.table-hover
+  %table.table.table-hover{ style: "table-layout: fixed;" }
     %tr.table-light
-      %th タイトル
+      %th.w-25 タイトル
       %th 説明
       %td
     - @articles.each do |article|

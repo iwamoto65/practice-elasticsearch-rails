@@ -1,0 +1,17 @@
+.container.w-75
+  %p.text-end.mt-4
+    = "全#{@article_drafts.size}件"
+
+  %table.table.table-hover{ style: "table-layout: fixed;" }
+    %tr.table-light
+      %th.w-25 タイトル
+      %th 説明
+    - @article_drafts.each do |article|
+      %tr.align-middle
+        %td
+          = article.title
+        %td
+          = article.description
+
+  .my-5
+    = paginate @article_drafts
