@@ -1,8 +1,8 @@
-= form_with model: @article, local: true do |f|
+= form_with model: @article_draft, local: true do |f|
   %div{ style: "margin: 30px;" }
     = f.label :title
     = f.text_field :title
   %div{ style: "margin: 30px;" }
     = f.label :description
     = f.text_area :description
-  = f.submit "更新する"
+  = f.submit "作成する"

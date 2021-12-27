@@ -1,6 +1,7 @@
 .container.w-75
   %p.text-end.mt-4
     = "全#{@article_drafts.size}件"
+    = link_to "新規作成", new_article_draft_path
 
   %table.table.table-hover{ style: "table-layout: fixed;" }
     %tr.table-light
@@ -14,8 +15,9 @@
         %td
           = article.description
         %td.text-end
-          = form_with url: apploval_article_draft_path(article.id), local: true do |f|
-            = f.submit '承認', class: "btn btn-info text-white", name: "confirm"
+          = button_to '承認', apploval_article_draft_path(article.id), method: :post, class: "btn btn-info text-white mb-1", name: "confirm"
+          = button_to '編集', edit_article_draft_path(article.id), method: :get, class: "btn btn-success mb-1"
+          = button_to '削除', article_draft_path(article.id), method: :delete, class: "btn btn-danger"
 
   .my-5
     = paginate @article_drafts
