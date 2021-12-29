@@ -1,8 +1,11 @@
 .container.w-75
   .mt-5
     .w-50.mx-auto
-      = render partial: 'forms/title_query_search', locals: { path: article_drafts_path }
-    %hr
+      = form_with url: article_drafts_path, local: true, method: :get, class: "d-flex justify-content-center input-group" do |f|
+        = f.search_field :title, placeholder: 'タイトルで検索', value: params[:title], class: "form-control d-inline"
+        = hidden_field_tag :status, "published"
+        = image_submit_tag "search.svg", class: "input-group-text"
+  %hr
 
   %p.text-end.mt-4
     = "全#{@article_drafts.size}件"
