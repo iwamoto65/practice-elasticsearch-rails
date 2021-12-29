@@ -1,4 +1,9 @@
 .container.w-75
+  .mt-5
+    .w-50.mx-auto
+      = render partial: 'forms/title_query_search', locals: { path: article_drafts_path }
+    %hr
+
   %p.text-end.mt-4
     = "全#{@article_drafts.size}件"
     = link_to "新規作成", new_article_draft_path

@@ -1,0 +1,3 @@
+= form_with url: path, local: true, method: :get, class: "d-flex justify-content-center input-group" do |f|
+  = f.search_field :title, placeholder: 'タイトルで検索', value: params[:title], class: "form-control d-inline"
+  = image_submit_tag "search.svg", class: "input-group-text"
