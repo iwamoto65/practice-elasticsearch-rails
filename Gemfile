@@ -21,6 +21,7 @@ gem 'popper_js', '~> 2.9', '>= 2.9.3'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'activerecord-import'
+gem 'ransack', '~> 2.4', '>= 2.4.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

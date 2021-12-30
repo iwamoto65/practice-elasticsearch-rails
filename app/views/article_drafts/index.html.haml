@@ -1,14 +1,14 @@
 .container.w-75
   .mt-5
     .w-50.mx-auto
-      = form_with url: article_drafts_path, local: true, method: :get, class: "d-flex justify-content-center input-group" do |f|
-        = f.search_field :title, placeholder: 'タイトルで検索', value: params[:title], class: "form-control d-inline"
-        = hidden_field_tag :status, "published"
-        = image_submit_tag "search.svg", class: "input-group-text"
+      = search_form_for @q, url: article_drafts_path, class: "d-flex justify-content-center input-group" do |f|
+        = f.search_field :title_or_description_cont, placeholder: '検索', value: params[:q][:title_or_description_cont], id: "article-draft-search", class: "form-control d-inline"
+        = button_tag type: "submit", name: nil, class: "input-group-text" do
+          = image_tag "search.svg"
   %hr
 
   %p.text-end.mt-4
-    = "全#{@article_drafts.size}件"
+    = "全#{@article_drafts_count}件"
     = link_to "新規作成", new_article_draft_path
 
   %table.table.table-hover{ style: "table-layout: fixed;" }

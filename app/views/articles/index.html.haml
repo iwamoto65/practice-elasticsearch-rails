@@ -1,9 +1,10 @@
 .container.w-75
   .mt-5
     .w-50.mx-auto
-      = form_with url: articles_path, local: true, method: :get, class: "d-flex justify-content-center input-group" do |f|
+      = form_with url: articles_path, local: true, skip_enforcing_utf8: true, method: :get, class: "d-flex justify-content-center input-group" do |f|
         = f.search_field :title, placeholder: 'タイトルで検索', value: params[:title], class: "form-control d-inline"
-        = image_submit_tag "search.svg", class: "input-group-text"
+        = button_tag type: "submit", class: "input-group-text" do
+          = image_tag "search.svg"
   %hr
 
   %p.text-end.mt-4
