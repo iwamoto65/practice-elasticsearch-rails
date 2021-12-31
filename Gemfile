@@ -22,6 +22,7 @@ gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'activerecord-import'
 gem 'ransack', '~> 2.4', '>= 2.4.1'
+gem 'jquery-rails', '~> 4.4'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
