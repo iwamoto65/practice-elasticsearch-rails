@@ -56,7 +56,7 @@ class ArticleDraftsController < ApplicationController
   private
 
   def set_search_form_value
-    params[:q] = { title_or_description_cont: "" } if params[:q].blank?
+    params[:q] = { title_or_description_cont: "", sorts: "updated_at desc" } if params[:q].blank?
   end
 
   def get_article_drafts(q, status)
