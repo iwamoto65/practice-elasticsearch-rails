@@ -2,8 +2,6 @@ class ArticleDraftsController < ApplicationController
   before_action :set_search_form_value, only: :index
 
   def index
-    puts "--------------"
-    puts params
     @article_drafts_count = ArticleDraft.all.size
     @q = ArticleDraft.ransack(params[:q])
     @article_drafts = get_article_drafts(@q, "draft")
