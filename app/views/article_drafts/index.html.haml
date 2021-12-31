@@ -9,23 +9,49 @@
 
   %p.text-end.mt-4
     = "全#{@article_drafts_count}件"
-    = link_to "新規作成", new_article_draft_path
 
-  %table.table.table-hover{ style: "table-layout: fixed;" }
-    %tr.table-light
-      %th.w-25 タイトル
-      %th{ style: "width: 65%;" } 説明
-      %th
-    - @article_drafts.each do |article|
-      %tr.align-middle
-        %td
-          = article.title
-        %td
-          = article.description
-        %td.text-end
-          = button_to '承認', apploval_article_draft_path(article.id), method: :post, class: "btn btn-info text-white mb-1", name: "confirm"
-          = button_to '編集', edit_article_draft_path(article.id), method: :get, class: "btn btn-success mb-1"
-          = button_to '削除', article_draft_path(article.id), method: :delete, class: "btn btn-danger"
+  %nav
+    .nav.nav-tabs.nav-fill#nav-tab{ role: "tablist" }
+      %button.nav-link.active#nav-not-apploval-tab{ "data-bs-toggle": "tab", "data-bs-target": "#nav-not-apploval", type: "button", role: "tab", "aria-controls": "nav-not-apploval", "aria-selected": "true" }
+        承認待ち
+      %button.nav-link#nav-apploval-tab{ "data-bs-toggle": "tab", "data-bs-target": "#nav-apploval", type: "button", role: "tab", "aria-controls": "nav-apploval", "aria-selected": "false" }
+        承認済み
+  .tab-content#nav-tabContent
+    .tab-pane.fade.show.active#nav-not-apploval{ role: "tabpanel", "aria-labelledby": "nav-not-apploval-tab" }
+      %p.text-end.mt-4
+        = link_to "新規作成", new_article_draft_path
+      %table.table.table-hover{ style: "table-layout: fixed;" }
+        %tr.table-light
+          %th.w-25 タイトル
+          %th{ style: "width: 65%;" } 説明
+          %th
+        - @article_drafts.each do |article|
+          %tr.align-middle
+            %td
+              = article.title
+            %td
+              = article.description
+            %td.text-end
+              = button_to '承認', apploval_article_draft_path(article.id), method: :post, class: "btn btn-info text-white mb-1", name: "confirm"
+              = button_to '編集', edit_article_draft_path(article.id), method: :get, class: "btn btn-success mb-1"
+              = button_to '削除', article_draft_path(article.id), method: :delete, class: "btn btn-danger"
+      .my-5
+        = paginate @article_drafts
 
-  .my-5
-    = paginate @article_drafts
+    .tab-pane.fade#nav-apploval{ role: "tabpanel", "aria-labelledby": "nav-apploval-tab" }
+      %table.table.table-hover{ style: "table-layout: fixed;" }
+        %tr.table-light
+          %th.w-25 タイトル
+          %th{ style: "width: 65%;" } 説明
+          %th
+        - @article_drafts_published.each do |article|
+          %tr.align-middle
+            %td
+              = article.title
+            %td
+              = article.description
+            %td.text-end
+              = button_to '編集', edit_article_draft_path(article.id), method: :get, class: "btn btn-success mb-1"
+              = button_to '削除', article_draft_path(article.id), method: :delete, class: "btn btn-danger"
+      .my-5
+        = paginate @article_drafts_published

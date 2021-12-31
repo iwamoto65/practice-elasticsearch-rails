@@ -2,11 +2,12 @@ class ArticleDraftsController < ApplicationController
   before_action :set_search_form_value, only: :index
 
   def index
+    puts "--------------"
+    puts params
     @article_drafts_count = ArticleDraft.all.size
     @q = ArticleDraft.ransack(params[:q])
-    @article_drafts = @q.result(distinct: true)
-                        .draft_status(params[:status] || "draft")
-                        .page(params[:page] || 1)
+    @article_drafts = get_article_drafts(@q, "draft")
+    @article_drafts_published = get_article_drafts(@q, "published")
   end
 
   def new
@@ -58,6 +59,12 @@ class ArticleDraftsController < ApplicationController
 
   def set_search_form_value
     params[:q] = { title_or_description_cont: "" } if params[:q].blank?
+  end
+
+  def get_article_drafts(q, status)
+    q.result(distinct: true)
+      .draft_status(status)
+      .page(params[:page] || 1)
   end
 
   def article_drafts_params
