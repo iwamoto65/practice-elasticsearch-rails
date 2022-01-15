@@ -1,1 +1,9 @@
-= link_to "記事一覧ページ", articles_path
+.container.w-50.mt-5
+  .row.row-cols-1.row-cols-md-2.g-4
+    = render partial: "card", locals: { path: articles_path,
+                                        image: "magazines.jpg",
+                                        title: "本・雑誌", text: "約1,000件のデータからあなたにぴったりの本・雑誌をお勧めします！" }
+    = render partial: "card", locals: { path: "",
+                                        image: "cinema.jpg",
+                                        title: "映画",
+                                        text: "Coming soon..." }
